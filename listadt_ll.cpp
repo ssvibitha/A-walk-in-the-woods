@@ -87,7 +87,7 @@ int main(){
                 result = list.search(val);
                 if(result == -1){
                     printf("Element not found\n");
-                }else if (return!= -2){
+                }else if (result!= -2){
                     printf("Element found at index: %d",result);
                 }
                 break;
@@ -255,11 +255,31 @@ void linkedList :: display(){
         printf("%d%s",temp->num, temp->next==NULL?"]\n":",");
         temp=temp->next;
     }
-
 }
 void linkedList :: displayReverse(){
-    
+    linked* temp = head;
+    int count = 0;
+    int arr[100];  
+    while (temp != NULL) {
+        arr[count++] = temp->num;
+        temp = temp->next;
+    }
+    printf("[");
+    for (int i = count - 1; i >= 0; i--) {
+        printf("%d%s", arr[i], i == 0 ? "]\n" : ", ");
+    }
 }
 void linkedList :: reverseLink(){
 
+    linked* prev = NULL;
+    linked* current = head;
+    linked* next = NULL;
+
+    while (current != NULL) {
+        next = current->next;  
+        current->next = prev; 
+        prev = current;        
+        current = next;        
+    }
+    head = prev; 
 }
