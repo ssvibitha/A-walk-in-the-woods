@@ -46,45 +46,45 @@ int main(){
             case 1: 
                 printf("Enter value to insert at beginning:");
                 scanf("%d",&val);
-                list.insertBeginning(val);
-                list.display();
+                list.insertBeginning(val);//Insert element at beginning
+                //list.display();
                 break;
             case 2: 
                 printf("Enter value to insert at end:");
                 scanf("%d",&val);
-                list.insertEnd(val);
+                list.insertEnd(val);//Insert element at end
                 break;
             case 3:
                 printf("Enter positon to add element: ");
                 scanf("%d",&pos);
                 printf("Enter value to insert at position:");
                 scanf("%d",&val);
-                list.insertPosition(pos,val);
+                list.insertPosition(pos,val);//Insert element at a position
                 break;
             case 4: 
-                deleted = list.deleteBeginning();
+                deleted = list.deleteBeginning();//Delete element from beginning
                 if(deleted != -1){
-                    printf("Deleted element:%d\n",deleted);
+                    printf("Deleted element:%d\n",deleted);//Display deleted element
                 }
                 break;
             case 5: 
-                deleted = list.deleteEnd();
+                deleted = list.deleteEnd();//Delete from the end
                 if(deleted != -1){
-                    printf("Deleted element: %d\n",deleted);   
+                    printf("Deleted element: %d\n",deleted);//Display deleted element  
                 }
                 break;
             case 6: 
                 printf("Enter positon to delete element: ");
                 scanf("%d",&pos);
-                deleted = list.deletePosition(pos);
+                deleted = list.deletePosition(pos);//Delete element from position
                 if(deleted != -1){
-                    printf("%d",deleted);
+                    printf("%d",deleted);//Display deleted element
                 }
                 break;
             case 7:
                 printf("Enter element to be searched in linked list: ");
                 scanf("%d",&val);
-                result = list.search(val);
+                result = list.search(val);//Search for an element
                 if(result == -1){
                     printf("Element not found\n");
                 }else if (result!= -2){
@@ -92,14 +92,14 @@ int main(){
                 }
                 break;
             case 8: 
-                list.display();
+                list.display();//Display linked list
                 break;
             case 9:
-                // list.displayReverse();
+                list.displayReverse();//Display reversed linked list
                 break;
             case 10: 
-                // list.reverseLink();
-                // list.display();
+                list.reverseLink();//Reverse the linked list
+                //list.display();
                 break;
             case 11: 
                 printf("Terminating program...\n");
@@ -110,7 +110,7 @@ int main(){
     }
     return 0;
 }
-void linkedList ::insertBeginning(int val){
+void linkedList ::insertBeginning(int val){//Insert at beginning
     linked* newnode = (linked*)malloc(sizeof(linked));
     if(newnode == NULL){
         printf("Memory allocation failed....\n");
@@ -120,7 +120,7 @@ void linkedList ::insertBeginning(int val){
     newnode->next = head;
     head= newnode;
 }
-void linkedList ::insertEnd(int val){
+void linkedList ::insertEnd(int val){//Insert at end
     linked* newnode = (linked*)malloc(sizeof(linked));
     if(newnode == NULL){
         printf("Memory allocation failed....\n");
@@ -138,7 +138,7 @@ void linkedList ::insertEnd(int val){
         temp->next = newnode;
     }
 }
-void linkedList ::insertPosition(int pos, int val){
+void linkedList ::insertPosition(int pos, int val){//Insert at position
     linked* newnode = (linked*)malloc(sizeof(linked));
     if(newnode == NULL){
         printf("Memory allocation failed....\n");
@@ -165,7 +165,7 @@ void linkedList ::insertPosition(int pos, int val){
     temp->next = newnode->next;
     temp->next = newnode;
 }
-int linkedList ::deleteBeginning(){
+int linkedList ::deleteBeginning(){//Delete at beginning
     linked *nodeToDelete= head;
     if(nodeToDelete == NULL){
         printf("List is empty...Deletion at beginning not possible\n");
@@ -176,7 +176,7 @@ int linkedList ::deleteBeginning(){
     free(nodeToDelete);
     return deleted;
 }
-int linkedList :: deleteEnd(){
+int linkedList :: deleteEnd(){//Delete at end
     if(head == NULL){
         printf("List is empty...Deletion at end not possible\n");
         return -1;
@@ -197,7 +197,7 @@ int linkedList :: deleteEnd(){
     temp->next = NULL;
     return deleted;
 }
-int linkedList :: deletePosition(int pos){
+int linkedList :: deletePosition(int pos){//Delete at position
     int deleted;
     if(head == NULL){
         printf("List is empty...Deletion at position not possible\n");
@@ -227,7 +227,7 @@ int linkedList :: deletePosition(int pos){
     free(toDelete);
     return deleted;
 }
-int linkedList :: search(int val){
+int linkedList :: search(int val){//Search
     if(head == NULL){
         printf("List is empty...Searching is not possible\n");
         return -2;
@@ -244,7 +244,7 @@ int linkedList :: search(int val){
         return count-1;
     }
 }
-void linkedList :: display(){
+void linkedList :: display(){//Display
     linked *temp = head;
     if(temp == NULL){
         printf("List is empty..\n");
@@ -256,7 +256,7 @@ void linkedList :: display(){
         temp=temp->next;
     }
 }
-void linkedList :: displayReverse(){
+void linkedList :: displayReverse(){//Display reverse
     linked* temp = head;
     int count = 0;
     int arr[100];  
@@ -269,17 +269,17 @@ void linkedList :: displayReverse(){
         printf("%d%s", arr[i], i == 0 ? "]\n" : ", ");
     }
 }
-void linkedList :: reverseLink(){
+void linkedList :: reverseLink(){//Reverse link
 
     linked* prev = NULL;
     linked* current = head;
-    linked* next = NULL;
+    linked* tail = NULL;
 
     while (current != NULL) {
-        next = current->next;  
+        tail = current->next;  
         current->next = prev; 
         prev = current;        
-        current = next;        
+        current = tail;        
     }
     head = prev; 
 }
