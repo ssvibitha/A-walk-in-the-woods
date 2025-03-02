@@ -62,6 +62,7 @@ int main(){
     }
     return 0;
 }
+// Function to push an element into the stack
 void StackADT::push(char val){
     if(top == SIZE-1){
         printf("Stack is full\n");
@@ -70,6 +71,7 @@ void StackADT::push(char val){
     top++;
     arr[top] = val;
 }
+// Function to pop an element from the stack
 int StackADT :: pop(){
     if(top ==-1){
         return '\0';
@@ -79,6 +81,7 @@ int StackADT :: pop(){
         return popped;
     }
 }
+// Function to peek the top element of the stack
 int StackADT::peek(){
     if(top == -1){
         return '\0';
@@ -86,6 +89,7 @@ int StackADT::peek(){
         return arr[top];
     }
 }
+// Function to display the elements of the stack
 void StackADT::display(){
     if(top == -1){
         printf("Stack is empty\n");
