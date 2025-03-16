@@ -119,7 +119,7 @@ void QueueADT::display() {
         printf("%d", arr[i]);
         if (i == rear) break;
         printf(", ");
-        i = (i + 1) % SIZE; // Move to the next index in circular manner
+        i = (i + 1) % SIZE; 
     }
     printf("]\n");
 }
