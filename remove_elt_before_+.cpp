@@ -13,7 +13,7 @@ int main(){
     printf("Result: %s\n", result);
     return 0;
 }
-// 
+// Function to process the string
 void process_string(char *str,char *result){
     StackADT stk;
     for(int i=0;str[i]!='\0';i++){
