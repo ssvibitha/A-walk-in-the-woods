@@ -10,7 +10,7 @@ private:
     list<int>* table;
 
 public:
-   HashTable(int size){
+    HashTable(int size){
         table_size = size;
         table = new list<int>[table_size];
     }
